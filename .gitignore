@@ -1,0 +1,16 @@
+WebService/.idea/*.iml
+WebService/.gradle
+WebService/local.properties
+WebService/.idea/caches
+WebService/.idea/libraries
+WebService/.idea/modules.xml
+WebService/.idea/workspace.xml
+WebService/.idea/navEditor.xml
+WebService/.idea/assetWizardSettings.xml
+WebService/.DS_Store
+WebService/build
+WebService/captures
+WebService/.externalNativeBuild
+WebService/.cxx
+.idea/*
+*.xml
