@@ -12,16 +12,25 @@ class SongModel
         return new ModelResponse($results[0]);
     }
 
-    public static function getSongs($songID) {
+    // Gets all songs
+    public static function getSongs() {
         $database = new Database();
-        $results = $database->executeSql("SELECT songTitle, songArtist, songLength FROM tblNotes WHERE songID = ?", "i", array($songID));
+        $results = $database->executeSql("SELECT * FROM tblSongs");
+
+        return new ModelResponse($results);
+    }
+
+    // Gets a singular song
+    public static function getSong($songID) {
+        $database = new Database();
+        $results = $database->executeSql("SELECT songTitle, songArtist, songLength FROM tblSongs WHERE songID = ?", "i", array($songID));
         return new ModelResponse($results);
     }
 
     public static function updateSong(Song $song) {
         $database = new Database();
 
-        $database->executeSql("UPDATE tblSongs SET songTitle = ?, songArtist = ? WHERE songLength = ?", "ssi", array($song->songTitle, $song->songArtist, $song->songLength));
+        $database->executeSql("UPDATE tblSongs SET songTitle = ?, songArtist = ?, songLength = ? WHERE songID = ?", "ssii", array($song->songTitle, $song->songArtist, $song->songLength, $song->songID));
 
         return new ModelResponse();
     }
