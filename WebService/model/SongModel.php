@@ -28,7 +28,7 @@ class SongModel
     public static function deleteSong($songID) {
         $database = new Database();
 
-        $database->executeSql("DELETE FROM tblSongs WHERE noteId = ?", "i", array($songID));
+        $database->executeSql("DELETE FROM tblSongs WHERE songID = ?", "i", array($songID));
 
         return new ModelResponse();
     }

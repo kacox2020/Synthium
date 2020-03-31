@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . "/brokers/StockBroker.php");
 require_once(__DIR__ . "/brokers/NoteBroker.php");
+require_once(__DIR__ . "/brokers/SongBroker.php");
 
 $request = explode("/", $_SERVER["PATH_INFO"]);
 $method = strtolower($_SERVER["REQUEST_METHOD"]);
