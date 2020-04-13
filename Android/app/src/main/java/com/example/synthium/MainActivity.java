@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
