@@ -7,6 +7,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -35,9 +37,11 @@ public class MainActivity extends AppCompatActivity implements MusicFragment.OnL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.homeFragment);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        NavigationUI.setupWithNavController(navView, navHostFragment.getNavController());
+//        mTextMessage = findViewById(R.id.message);
+//        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     @Override

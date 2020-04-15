@@ -17,3 +17,4 @@ WebService/.cxx
 Android/gradle/wrapper/gradle-wrapper.properties
 Android/build.gradle
 Android/.idea/gradle.xml
+Android/.idea/misc.xml
