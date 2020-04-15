@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity implements MusicFragment.OnL
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.homeFragment:
-                    mTextMessage.setText("HOME");
+                    //mTextMessage.setText("HOME");
                     return true;
                 case R.id.musicFragment:
-                    mTextMessage.setText("MUSIC");
+                    //mTextMessage.setText("MUSIC");
                     return true;
             }
             return false;
