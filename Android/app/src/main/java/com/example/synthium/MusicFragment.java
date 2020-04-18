@@ -11,11 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import android.widget.TextView;
+
+
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.synthium.dummy.DummyContent;
 import com.example.synthium.dummy.DummyContent.DummyItem;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +54,28 @@ public class MusicFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Call the Database
+        ServiceClient serviceClient = ServiceClient.getInstance(getContext());
+        StringRequest request = new StringRequest(Request.Method.GET, "https://mopsdev.bw.edu/~kcox18/Synthium/WebService/rest.php/song", new Response.Listener<String>() {
+            // onClient Error
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject musicListObject = new JSONObject(response);
+
+                } catch (JSONException je) {
+                    je.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            // onServer Error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(getContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        serviceClient.addRequest(request);
     }
 
     @Override
