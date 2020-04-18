@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.synthium.dummy.DummyContent;
 import com.example.synthium.dummy.DummyContent.DummyItem;
@@ -48,6 +49,7 @@ public class MusicFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_music_list, container, false);
 
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -59,6 +61,7 @@ public class MusicFragment extends Fragment {
             }
             recyclerView.setAdapter(new MyMusicRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
+
         return view;
     }
 
