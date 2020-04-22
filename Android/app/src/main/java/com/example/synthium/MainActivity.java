@@ -2,7 +2,7 @@ package com.example.synthium;
 
 import android.os.Bundle;
 
-import com.example.synthium.dummy.DummyContent;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity implements MusicFragment.OnListFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -40,12 +40,9 @@ public class MainActivity extends AppCompatActivity implements MusicFragment.OnL
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.homeFragment);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         NavigationUI.setupWithNavController(navView, navHostFragment.getNavController());
-//        mTextMessage = findViewById(R.id.message);
-//        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//       mTextMessage = findViewById(R.id.message);
+//       navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
-    }
 }

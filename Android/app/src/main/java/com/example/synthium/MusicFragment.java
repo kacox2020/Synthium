@@ -20,8 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.synthium.dummy.DummyContent;
-import com.example.synthium.dummy.DummyContent.DummyItem;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -93,23 +92,24 @@ public class MusicFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyMusicRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            SongModel model = new SongModel();
+            recyclerView.setAdapter(new MyMusicRecyclerViewAdapter(model.getMusic(), mListener));
         }
 
         return view;
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnListFragmentInteractionListener) {
+//            mListener = (OnListFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnListFragmentInteractionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {
@@ -129,6 +129,6 @@ public class MusicFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Song item);
     }
 }
