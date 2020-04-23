@@ -2,10 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Home"/>
+        android:icon="@drawable/levels"
+        android:title="Home" />
 
     <item
         android:id="@+id/musicFragment"
-        android:title="Music"/>
+        android:icon="@drawable/casette_tape"
+        android:title="Music"
+
+        />
 
 </menu>
