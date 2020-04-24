@@ -36,12 +36,22 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class MusicFragment extends Fragment implements OnListFragmentInteractionListener{
+interface OnListFragmentInteractionListener {
+    void onListFragmentInteraction(Song item);
+}
+
+
+public class MusicFragment extends Fragment implements OnListFragmentInteractionListener {
+
+    @Override
+    public void onListFragmentInteraction(Song song) {
+        Toast.makeText(getContext(), song.songArtist, Toast.LENGTH_SHORT).show();
+    }
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private OnListFragmentInteractionListener mListener;
+    private OnListFragmentInteractionListener mListener = this;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -122,12 +132,5 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-
-    @Override
-    public void onListFragmentInteraction(Song item) {
-        Toast.makeText(getContext(), "click worked", Toast.LENGTH_SHORT).show();
-
     }
 }
