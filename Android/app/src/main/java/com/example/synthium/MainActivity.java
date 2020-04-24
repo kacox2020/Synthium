@@ -1,5 +1,6 @@
 package com.example.synthium;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.homeFragment);
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setItemIconTintList(null);
         NavigationUI.setupWithNavController(navView, navHostFragment.getNavController());
 //       mTextMessage = findViewById(R.id.message);
 //       navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
