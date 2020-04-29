@@ -13,7 +13,7 @@ public class SongModel {
     }
 
     public void setMusic(JSONObject songObject) throws JSONException {
-        Song song = new Song(songObject.getString("songTitle"), songObject.getString("songArtist"), songObject.getInt("songID"), songObject.getInt("songLength"));
+        Song song = new Song(songObject.getString("songTitle"), songObject.getString("songArtist"), songObject.getInt("songID"), songObject.getInt("songLength"), songObject.getString("songURL"));
         songs.add(song);
     }
 }
