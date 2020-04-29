@@ -9,7 +9,7 @@
         android:id="@+id/musicFragment"
         android:icon="@drawable/casette_tape"
         android:title="Music"
-
+        android:iconTintMode="src_atop"
         />
 
 </menu>
