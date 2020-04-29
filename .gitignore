@@ -13,7 +13,6 @@ WebService/captures
 WebService/.externalNativeBuild
 WebService/.cxx
 .idea/*
-*.xml
 Android/gradle/wrapper/gradle-wrapper.properties
 Android/build.gradle
 Android/.idea/gradle.xml
