@@ -34,7 +34,7 @@ public class PlayerFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         Bundle bundle = getArguments();
-        Song selectedSong = new Song(bundle.getString("songTitle"), bundle.getString("songArtist"), bundle.getInt("songId"), bundle.getInt("songLength"));
+        Song selectedSong = new Song(bundle.getString("songTitle"), bundle.getString("songArtist"), bundle.getInt("songId"), bundle.getInt("songLength"), bundle.getString("songURL"));
 
         View view = inflater.inflate(R.layout.fragment_player, container, false);
 
@@ -65,13 +65,12 @@ public class PlayerFragment extends Fragment {
                 }
             }
         });
-        prepareMediaPlayer();
+        prepareMediaPlayer(selectedSong);
         return view;
     }
 
-    private void prepareMediaPlayer(){
-        String url = "http://infinityandroid.com/music/good_times.mp3";
-        String url2 = "https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_1MG.mp3";
+    private void prepareMediaPlayer(Song song){
+        String url = song.songURL;
         try {
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
