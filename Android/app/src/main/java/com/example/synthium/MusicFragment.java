@@ -47,7 +47,14 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
 
     @Override
     public void onListFragmentInteraction(Song song) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("songId", song.songID);
+        bundle.putString("songTitle", song.songTitle);
+        bundle.putString("songArtist", song.songArtist);
+        bundle.putInt("songLength", song.songLength);
+
         PlayerFragment playerFragment = new PlayerFragment();
+        playerFragment.setArguments(bundle);
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
