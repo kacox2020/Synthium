@@ -53,7 +53,6 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
         bundle.putString("songArtist", song.songArtist);
         bundle.putInt("songLength", song.songLength);
         bundle.putString("songURL", song.songURL);
-        Toast.makeText(getContext(), song.songURL, Toast.LENGTH_SHORT).show();
 
         PlayerFragment playerFragment = new PlayerFragment();
         playerFragment.setArguments(bundle);
