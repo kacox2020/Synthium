@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,7 +47,14 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
 
     @Override
     public void onListFragmentInteraction(Song song) {
-        Toast.makeText(getContext(), song.songArtist, Toast.LENGTH_SHORT).show();
+        PlayerFragment playerFragment = new PlayerFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.playerContainer, playerFragment);
+
+        fragmentTransaction.disallowAddToBackStack();
+        fragmentTransaction.commit();
     }
 
     // TODO: Customize parameters
