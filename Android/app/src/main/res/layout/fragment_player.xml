@@ -12,14 +12,43 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/superTestString"
+            android:id="@+id/testTotalDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Super Duper Test String"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/zero"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/playerSeekBar"
+            tools:layout_editor_absoluteY="184dp" />
+
+        <TextView
+            android:id="@+id/testCurrentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/playerSeekBar"
+            tools:layout_editor_absoluteY="186dp" />
+
+        <SeekBar
+            android:id="@+id/playerSeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="184dp"
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="82dp" />
+
+        <ImageView
+            android:id="@+id/imagePlayPause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_play"
+            app:layout_constraintTop_toBottomOf="@+id/playerSeekBar"
+            tools:layout_editor_absoluteX="166dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
