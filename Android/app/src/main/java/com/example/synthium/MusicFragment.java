@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,10 +45,12 @@ interface OnListFragmentInteractionListener {
 
 
 public class MusicFragment extends Fragment implements OnListFragmentInteractionListener {
+    private ArrayList<String> songUrlList = new ArrayList<>();
 
     @Override
     public void onListFragmentInteraction(Song song) {
         Bundle bundle = new Bundle();
+        bundle.putStringArrayList("songUrlList", songUrlList);
         bundle.putInt("songId", song.songID);
         bundle.putString("songTitle", song.songTitle);
         bundle.putString("songArtist", song.songArtist);
@@ -111,6 +114,7 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
                         for (int i = 0; i < responseObject.length(); i++) {
                             JSONObject songObject = responseObject.getJSONObject(i);
                             model.setMusic(songObject);
+                            songUrlList.add(model.songs.get(i).songURL);
                         }
                         MyMusicRecyclerViewAdapter adapter = new MyMusicRecyclerViewAdapter(model.getMusic(), mListener);
                         recyclerView.setAdapter(adapter);
