@@ -18,6 +18,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,10 +30,23 @@ public class PlayerFragment extends Fragment {
     private TextView textCurrentTime, textTotalDuration;
     private SeekBar playerSeekBar;
     private Handler handler = new Handler();
+
     public PlayerFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        // Proper handling of media player when starting new song or leaving app
+        if (mediaPlayer != null) {
+            handler.removeCallbacks(updater);
+            mediaPlayer.pause();
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +54,7 @@ public class PlayerFragment extends Fragment {
 
         Bundle bundle = getArguments();
         Song selectedSong = new Song(bundle.getString("songTitle"), bundle.getString("songArtist"), bundle.getInt("songId"), bundle.getInt("songLength"), bundle.getString("songURL"));
+        ArrayList<String> songUrlList = bundle.getStringArrayList("songUrlList");
 
         View view = inflater.inflate(R.layout.fragment_player, container, false);
 
@@ -66,7 +82,6 @@ public class PlayerFragment extends Fragment {
                     mediaPlayer.start();
                     imagePlayPause.setImageResource(R.drawable.ic_pause);
                     updateSeekBar();
-
                 }
             }
         });
@@ -82,8 +97,10 @@ public class PlayerFragment extends Fragment {
             mediaPlayer.prepare();
             textTotalDuration.setText(millisecondsToTimer(mediaPlayer.getDuration()));
 
+
         }catch (Exception e){
             Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+
 
         }
     }
@@ -97,13 +114,9 @@ public class PlayerFragment extends Fragment {
         }
     };
 
-    private void updateSeekBar(){
-        if(mediaPlayer.isPlaying()){
-            playerSeekBar.setProgress((int)(((float)mediaPlayer.getCurrentPosition()/mediaPlayer.getDuration() )* 100));
-            handler.postDelayed(updater,1000);
-
-        }
-
+    private void updateSeekBar() {
+        playerSeekBar.setProgress((int)(((float)mediaPlayer.getCurrentPosition()/mediaPlayer.getDuration() )* 100));
+        handler.postDelayed(updater,1000);
     }
 
     private String millisecondsToTimer(long milliSecond){
@@ -126,10 +139,8 @@ public class PlayerFragment extends Fragment {
             }
 
         }
-
         else {
             secondsString = "" + seconds;
-
         }
         timerString = timerString + minutes + ":" + secondsString;
         return  timerString;
