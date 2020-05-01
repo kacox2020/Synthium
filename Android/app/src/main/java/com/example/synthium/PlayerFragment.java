@@ -1,5 +1,6 @@
 package com.example.synthium;
 
+import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -9,7 +10,10 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListPopupWindow;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +51,7 @@ public class PlayerFragment extends Fragment {
         playerSeekBar = view.findViewById(R.id.playerSeekBar);
         mediaPlayer = new MediaPlayer();
 
+
         playerSeekBar.setMax(100);
 
         imagePlayPause.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +74,7 @@ public class PlayerFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("ShowToast")
     private void prepareMediaPlayer(Song song){
         String url = song.songURL;
         try {
@@ -77,7 +83,7 @@ public class PlayerFragment extends Fragment {
             textTotalDuration.setText(millisecondsToTimer(mediaPlayer.getDuration()));
 
         }catch (Exception e){
-            Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT);
+            Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -127,5 +133,9 @@ public class PlayerFragment extends Fragment {
         }
         timerString = timerString + minutes + ":" + secondsString;
         return  timerString;
+    }
+
+    public void createMP(){
+        mediaPlayer = new MediaPlayer();
     }
 }

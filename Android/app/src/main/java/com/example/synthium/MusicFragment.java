@@ -44,26 +44,30 @@ interface OnListFragmentInteractionListener {
 
 
 public class MusicFragment extends Fragment implements OnListFragmentInteractionListener {
-
     @Override
     public void onListFragmentInteraction(Song song) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("songId", song.songID);
-        bundle.putString("songTitle", song.songTitle);
-        bundle.putString("songArtist", song.songArtist);
-        bundle.putInt("songLength", song.songLength);
-        bundle.putString("songURL", song.songURL);
 
-        PlayerFragment playerFragment = new PlayerFragment();
-        playerFragment.setArguments(bundle);
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.playerContainer, playerFragment);
+            Bundle bundle = new Bundle();
+            bundle.putInt("songId", song.songID);
+            bundle.putString("songTitle", song.songTitle);
+            bundle.putString("songArtist", song.songArtist);
+            bundle.putInt("songLength", song.songLength);
+            bundle.putString("songURL", song.songURL);
 
-        fragmentTransaction.disallowAddToBackStack();
-        fragmentTransaction.commit();
-    }
+            PlayerFragment playerFragment = new PlayerFragment();
+            playerFragment.setArguments(bundle);
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.playerContainer, playerFragment);
+
+            fragmentTransaction.disallowAddToBackStack();
+            fragmentTransaction.commit();
+        }
+
+
+
 
     // TODO: Customize parameters
     private int mColumnCount = 1;
