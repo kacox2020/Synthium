@@ -12,4 +12,10 @@
         android:iconTintMode="src_atop"
         />
 
+    <item
+        android:id="@+id/playlistFragment"
+        android:icon="@drawable/wavelength"
+        android:title="Playlist"
+        />
+
 </menu>

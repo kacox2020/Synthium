@@ -9,14 +9,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecyclerViewAdapter.ViewHolder> {
+public class MyPlaylistRecyclerViewAdapter extends RecyclerView.Adapter<MyPlaylistRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Song> mValues;
+    private final List<Playlist> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-
-
-    public MyMusicRecyclerViewAdapter(List<Song> items, OnListFragmentInteractionListener listener) {
+    public MyPlaylistRecyclerViewAdapter(List<Playlist> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -24,16 +22,16 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_music, parent, false);
+                .inflate(R.layout.fragment_playlist, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        String id = String.valueOf(mValues.get(position).songID);
+        String id = String.valueOf(mValues.get(position).playlistID);
         holder.mIdView.setText(id);
-        holder.mContentView.setText(mValues.get(position).songTitle);
+        holder.mContentView.setText(mValues.get(position).playlistName);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +40,7 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(holder.mItem);
-
                 }
-
             }
         });
     }
@@ -58,7 +54,7 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public Song mItem;
+        public Playlist mItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -72,6 +68,4 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
-
-
 }
