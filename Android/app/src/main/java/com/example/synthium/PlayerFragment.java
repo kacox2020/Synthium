@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -30,6 +31,8 @@ public class PlayerFragment extends Fragment {
     private TextView textCurrentTime, textTotalDuration;
     private SeekBar playerSeekBar;
     private Handler handler = new Handler();
+
+
 
     public PlayerFragment() {
         // Required empty public constructor
@@ -87,11 +90,17 @@ public class PlayerFragment extends Fragment {
         });
         prepareMediaPlayer(selectedSong);
         return view;
+
+
     }
 
-    @SuppressLint("ShowToast")
     private void prepareMediaPlayer(Song song){
+
+
+
+
         String url = song.songURL;
+
         try {
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
@@ -103,6 +112,8 @@ public class PlayerFragment extends Fragment {
 
 
         }
+
+
     }
 
     private  Runnable updater = new Runnable() {
@@ -146,7 +157,8 @@ public class PlayerFragment extends Fragment {
         return  timerString;
     }
 
-    public void createMP(){
-        mediaPlayer = new MediaPlayer();
+
+
+
     }
-}
+
