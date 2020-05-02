@@ -15,4 +15,10 @@
         android:name="com.example.synthium.MusicFragment"
         android:label="fragment_music_list"
         tools:layout="@layout/fragment_music_list" />
+    
+    <fragment
+        android:id="@+id/playlistFragment"
+        android:name="com.example.synthium.PlaylistFragment"
+        android:label="fragment_playlist_list"
+        tools:layout="@layout/fragment_playlist_list" />
 </navigation>

@@ -58,9 +58,6 @@ public class PlayerFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_player, container, false);
 
-//        TextView test = view.findViewById(R.id.superTestString);
-//        test.setText(selectedSong.songTitle);
-
         imagePlayPause = view.findViewById(R.id.imagePlayPause);
         textCurrentTime = view.findViewById(R.id.testCurrentTime);
         textTotalDuration = view.findViewById(R.id.testTotalDuration);
