@@ -1,6 +1,4 @@
 <?php
-require_once(__DIR__ . "/brokers/StockBroker.php");
-require_once(__DIR__ . "/brokers/NoteBroker.php");
 require_once(__DIR__ . "/brokers/SongBroker.php");
 require_once(__DIR__ . "/brokers/SongPlaylistRelationshipBroker.php");
 require_once(__DIR__ . "/brokers/PlaylistBroker.php");
