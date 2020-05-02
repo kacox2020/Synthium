@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__ . "/Database.php");
 require_once(__DIR__ . "/types/Playlist.php");
 require_once(__DIR__ . "/types/ModelResponse.php");
 require_once(__DIR__ . "/JSONDatasource.php");
@@ -22,7 +22,7 @@ public static function createPlaylist(Playlist $playlist) {
     // Gets a singular Playlist
     public static function getPlaylist($playlistID) {
     $database = new Database();
-    $results = $database->executeSql("SELECT playlistName WHERE playlistID = ?", "i", array($playlistID));
+    $results = $database->executeSql("SELECT playlistName FROM tblPlaylists WHERE playlistID = ?", "i", array($playlistID));
     return new ModelResponse($results);
 }
 

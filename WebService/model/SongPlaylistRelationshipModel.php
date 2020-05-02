@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__ . "/Database.php");
 require_once(__DIR__ . "/types/SongPlaylistRelationship.php");
 require_once(__DIR__ . "/types/ModelResponse.php");
 require_once(__DIR__ . "/JSONDatasource.php");
