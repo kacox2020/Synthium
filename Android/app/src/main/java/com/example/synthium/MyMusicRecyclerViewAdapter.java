@@ -14,6 +14,8 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
     private final List<Song> mValues;
     private final OnListFragmentInteractionListener mListener;
 
+
+
     public MyMusicRecyclerViewAdapter(List<Song> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
@@ -40,6 +42,7 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(holder.mItem);
+
                 }
 
             }
@@ -69,4 +72,6 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
             return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
+
+
 }

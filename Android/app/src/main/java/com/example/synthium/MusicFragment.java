@@ -42,7 +42,6 @@ import java.util.List;
 
 public class MusicFragment extends Fragment implements OnListFragmentInteractionListener<Object> {
 
-
     private ArrayList<String> songUrlList = new ArrayList<>();
 
     @Override
@@ -65,6 +64,8 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
 
         fragmentTransaction.disallowAddToBackStack();
         fragmentTransaction.commit();
+
+
     }
 
 
