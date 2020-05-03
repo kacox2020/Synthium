@@ -68,7 +68,6 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
 
     }
 
-
     private int mColumnCount = 1;
 
     private OnListFragmentInteractionListener mListener = this;
@@ -83,8 +82,6 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
