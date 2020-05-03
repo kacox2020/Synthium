@@ -1,7 +1,9 @@
 package com.example.synthium;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -96,22 +98,36 @@ public class EditSong extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServiceClient serviceClient = ServiceClient.getInstance(getApplicationContext());
-                StringRequest request = new StringRequest(Request.Method.DELETE, completedURL, new Response.Listener<String>() {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(EditSong.this);
+                alertDialog.setMessage(R.string.Areyousureyouwanttodeletethissong);
+                alertDialog.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                }, new Response.ErrorListener() {
-                    // onServer Error
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        Toast.makeText(getApplicationContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
-                serviceClient.addRequest(request);
+                alertDialog.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ServiceClient serviceClient = ServiceClient.getInstance(getApplicationContext());
+                        StringRequest request = new StringRequest(Request.Method.DELETE, completedURL, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Toast.makeText(getApplicationContext(), "Deleted!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }, new Response.ErrorListener() {
+                            // onServer Error
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                Toast.makeText(getApplicationContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        serviceClient.addRequest(request);
+                    }
+                });
+                alertDialog.show();
             }
         });
     }
