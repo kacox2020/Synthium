@@ -75,7 +75,7 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
     private OnListFragmentInteractionListener mListener = this;
 
     /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
+     * Mandary empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public MusicFragment() {
@@ -140,7 +140,7 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                Toast.makeText(getContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.An_error, Toast.LENGTH_SHORT).show();
             }
         });
         serviceClient.addRequest(request);

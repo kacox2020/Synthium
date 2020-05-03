@@ -107,7 +107,7 @@ public class PlaylistFragment extends Fragment implements OnListFragmentInteract
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
-                    Toast.makeText(getContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.An_error, Toast.LENGTH_SHORT).show();
                 }
             });
             serviceClient.addRequest(request);

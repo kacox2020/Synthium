@@ -54,14 +54,14 @@ public class AddSong extends AppCompatActivity {
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, websiteURL, songObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getApplicationContext(), "Created!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.Created, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Toast.makeText(getApplicationContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.An_error, Toast.LENGTH_SHORT).show();
                     }
                 });
                 serviceClient.addRequest(request);
