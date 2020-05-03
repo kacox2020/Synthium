@@ -21,11 +21,14 @@ import java.util.Map;
 
 public class AddSong extends AppCompatActivity {
     private String websiteURL = "https://mopsdev.bw.edu/~kcox18/Synthium/WebService/rest.php/song";
+    private String websiteAudioURL = "https://mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_song);
         Button addSongButton = findViewById(R.id.addbtn);
+        final EditText songURL = findViewById(R.id.songURL);
+        songURL.setText(websiteAudioURL);
 
         addSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +37,6 @@ public class AddSong extends AppCompatActivity {
                 EditText songArtist = findViewById(R.id.songArtist);
                 EditText songMin = findViewById(R.id.lengthMinutes);
                 EditText songSec = findViewById(R.id.lengthSeconds);
-                EditText songURL = findViewById(R.id.songURL);
 
                 int songMinutes = Integer.parseInt(songMin.getText().toString()) * 60;
                 int songSeconds = Integer.parseInt(songSec.getText().toString());
