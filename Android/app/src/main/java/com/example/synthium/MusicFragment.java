@@ -1,8 +1,10 @@
 package com.example.synthium;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,6 +43,8 @@ import java.util.List;
  */
 
 public class MusicFragment extends Fragment implements OnListFragmentInteractionListener<Object> {
+    private RecyclerView recyclerView;
+    private SongModel model;
 
     private ArrayList<String> songUrlList = new ArrayList<>();
 
@@ -91,45 +95,55 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            final RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            final SongModel model = new SongModel();
-
-            // Call the Database
-            ServiceClient serviceClient = ServiceClient.getInstance(getContext());
-            StringRequest request = new StringRequest(Request.Method.GET, "https://mopsdev.bw.edu/~kcox18/Synthium/WebService/rest.php/song", new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        JSONArray responseObject = new JSONObject(response).getJSONArray("responseObject");
-                        for (int i = 0; i < responseObject.length(); i++) {
-                            JSONObject songObject = responseObject.getJSONObject(i);
-                            model.setMusic(songObject);
-                            songUrlList.add(model.songs.get(i).songURL);
-                        }
-                        MyMusicRecyclerViewAdapter adapter = new MyMusicRecyclerViewAdapter(model.getMusic(), mListener);
-                        recyclerView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-                    } catch (JSONException je) {
-                        je.printStackTrace();
-                    }
-                }
-            }, new Response.ErrorListener() {
-                // onServer Error
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                    Toast.makeText(getContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
-                }
-            });
-            serviceClient.addRequest(request);
+            model = new SongModel();
+            getSongsRequest(recyclerView, model);
         }
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyMusicRecyclerViewAdapter adapter = new MyMusicRecyclerViewAdapter(model.getMusic(), mListener);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void getSongsRequest(final RecyclerView recyclerView, final SongModel model) {
+        // Call the Database
+        ServiceClient serviceClient = ServiceClient.getInstance(getContext());
+        StringRequest request = new StringRequest(Request.Method.GET, "https://mopsdev.bw.edu/~kcox18/Synthium/WebService/rest.php/song", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray responseObject = new JSONObject(response).getJSONArray("responseObject");
+                    for (int i = 0; i < responseObject.length(); i++) {
+                        JSONObject songObject = responseObject.getJSONObject(i);
+                        model.setMusic(songObject);
+                        songUrlList.add(model.songs.get(i).songURL);
+                    }
+                    MyMusicRecyclerViewAdapter adapter = new MyMusicRecyclerViewAdapter(model.getMusic(), mListener);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                } catch (JSONException je) {
+                    je.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            // onServer Error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(getContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        serviceClient.addRequest(request);
     }
 
     @Override

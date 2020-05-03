@@ -56,8 +56,7 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
             });
         } else {
             holder.mItem = mValues.get(position);
-            String id = String.valueOf(mValues.get(position).songID);
-            holder.mIdView.setText(id);
+            holder.mIdView.setText(String.valueOf(position+1));
             holder.mContentView.setText(mValues.get(position).songTitle);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +68,22 @@ public class MyMusicRecyclerViewAdapter extends RecyclerView.Adapter<MyMusicRecy
                         mListener.onListFragmentInteraction(holder.mItem);
 
                     }
+                }
+            });
+
+            holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent(v.getContext(), EditSong.class);
+                    intent.putExtra("songID", holder.mItem.songID);
+                    intent.putExtra("songTitle", holder.mItem.songTitle);
+                    intent.putExtra("songArtist", holder.mItem.songArtist);
+                    intent.putExtra("songLength", holder.mItem.songLength);
+                    intent.putExtra("songURL", holder.mItem.songURL);
+
+                    v.getContext().startActivity(intent);
+
+                    return false;
                 }
             });
         }
