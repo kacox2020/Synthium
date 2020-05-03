@@ -18,7 +18,7 @@
     <string name="Deleted">Deleted\!</string>
     <string name="Created">Created\!</string>
     <string name="An_error">An Error Has Occurred\!</string>
-
-
-
+    <string name="Areyousureyouwanttodeletethissong">Are you sure you want to delete this song?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
 </resources>
