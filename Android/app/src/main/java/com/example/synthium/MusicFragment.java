@@ -64,8 +64,6 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
 
         fragmentTransaction.disallowAddToBackStack();
         fragmentTransaction.commit();
-
-
     }
 
     private int mColumnCount = 1;
