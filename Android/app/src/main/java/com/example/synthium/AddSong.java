@@ -10,13 +10,17 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddSong extends AppCompatActivity {
-
+    private String websiteURL = "https://mopsdev.bw.edu/~kcox18/Synthium/WebService/rest.php/song";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,43 +30,40 @@ public class AddSong extends AppCompatActivity {
         addSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText songName = findViewById(R.id.songName);
+                EditText songArtist = findViewById(R.id.songArtist);
+                EditText songMin = findViewById(R.id.lengthMinutes);
+                EditText songSec = findViewById(R.id.lengthSeconds);
+                EditText songURL = findViewById(R.id.songURL);
+
+                int songMinutes = Integer.parseInt(songMin.getText().toString()) * 60;
+                int songSeconds = Integer.parseInt(songSec.getText().toString());
+                int totalSongLength = songMinutes + songSeconds;
+
+                JSONObject songObject = new JSONObject();
+                try {
+                    songObject.put("songTitle", songName.getText().toString());
+                    songObject.put("songArtist", songArtist.getText().toString());
+                    songObject.put("songLength", totalSongLength);
+                    songObject.put("songURL", songURL.getText().toString());
+                } catch (JSONException je) {
+                    je.printStackTrace();
+                }
+
                 ServiceClient serviceClient = ServiceClient.getInstance(getApplicationContext());
-                StringRequest request = new StringRequest(Request.Method.POST, "https://mopsdev.bw.edu/~kcox18/Synthium/WebService/rest.php/song", new Response.Listener<String>() {
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, websiteURL, songObject, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getApplicationContext(), "Created!", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
-                }, new Response.ErrorListener()
-                {
+                }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // error
+                        error.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "An Error has occurred.", Toast.LENGTH_SHORT).show();
                     }
-                }
-                ) {
-                    @Override
-                    protected Map<String, String> getParams()
-                    {
-                        // Find Strings for request
-                        EditText songName = findViewById(R.id.songName);
-                        EditText songArtist = findViewById(R.id.songArtist);
-                        EditText songMin = findViewById(R.id.lengthMinutes);
-                        EditText songSec = findViewById(R.id.lengthSeconds);
-                        EditText songURL = findViewById(R.id.songURL);
-
-                        int songMinutes = Integer.parseInt(songMin.getText().toString()) * 60;
-                        int songSeconds = Integer.parseInt(songSec.getText().toString());
-                        int totalSongLength = songMinutes + songSeconds;
-
-                        Map<String, String>  params = new HashMap<>();
-                        params.put("songTitle", songName.getText().toString());
-                        params.put("songArtist", songArtist.getText().toString());
-                        params.put("songLength", String.valueOf(totalSongLength));
-                        params.put("songURL", songURL.getText().toString());
-
-                        return params;
-                    }
-                };
+                });
                 serviceClient.addRequest(request);
             }
         });
