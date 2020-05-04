@@ -18,3 +18,14 @@ Wonderland: https://mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Wonderland.mp3
 Say It Ain't So: https://mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Say It Ain't So.mp3
 Crystals: https://mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Crystals.mp3
 Sometimes: https://mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Sometimes.mp3
+Hero: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Hero.mp3
+Moonlight: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Monlight.mp3
+Moonlight Sonata: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Moonlight Sonata.mp3
+Truth: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Truth.mp3
+Where I belong: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Where I belong.mp3
+My Own Prison: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/My Own Prison.mp3
+Moments: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Moments.mp3
+Love Is Gone: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Love Is Gone.mp3
+Event Horizon: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Event Horizon.mp3
+Just For A Moment: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Just For A Moment.mp3
+Something Comforting: //mopsdev.bw.edu/~kcox18/Synthium/AudioFiles/Something Comforting.mp3
