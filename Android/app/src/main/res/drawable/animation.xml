@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
+    <item
+        android:drawable="@drawable/visualizer_1"
+        android:duration="400"/>
+    <item
+        android:drawable="@drawable/visualizer_2"
+        android:duration="400"/>
+    <item
+        android:drawable="@drawable/visualizer_3"
+        android:duration="400"/>
+    <item
+        android:drawable="@drawable/visualizer_4"
+        android:duration="400"/>
+    <item
+        android:drawable="@drawable/visualizer5"
+        android:duration="400"/>
+    <item
+        android:drawable="@drawable/visualizer_6"
+        android:duration="400"/>
+
+</animation-list>

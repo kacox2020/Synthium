@@ -68,6 +68,7 @@ public class PlayerFragment extends Fragment {
         mediaPlayer = new MediaPlayer();
 
 
+
         playerSeekBar.setMax(100);
 
         imagePlayPause.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +78,7 @@ public class PlayerFragment extends Fragment {
                     handler.removeCallbacks(updater);
                     mediaPlayer.pause();
                     imagePlayPause.setImageResource(R.drawable.ic_play);
+
                 }
                 else {
                     mediaPlayer.start();

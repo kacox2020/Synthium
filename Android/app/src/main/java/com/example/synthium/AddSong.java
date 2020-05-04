@@ -37,7 +37,29 @@ public class AddSong extends AppCompatActivity {
                 EditText songArtist = findViewById(R.id.songArtist);
                 EditText songMin = findViewById(R.id.lengthMinutes);
                 EditText songSec = findViewById(R.id.lengthSeconds);
+                if(songName.length() == 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
 
+                }
+                else if(songArtist.length()== 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+                }
+                else if(songMin.length() == 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+
+                }
+                else if (songSec.length() == 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+                }
+                else if(songURL.length() == 0) {
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+
+                }
+                else{
                 int songMinutes = Integer.parseInt(songMin.getText().toString()) * 60;
                 int songSeconds = Integer.parseInt(songSec.getText().toString());
                 int totalSongLength = songMinutes + songSeconds;
@@ -67,6 +89,7 @@ public class AddSong extends AppCompatActivity {
                     }
                 });
                 serviceClient.addRequest(request);
+                }
             }
         });
 

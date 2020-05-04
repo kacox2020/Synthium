@@ -21,4 +21,10 @@
     <string name="Areyousureyouwanttodeletethissong">Are you sure you want to delete this song?</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
+    <string name="EnterSongName">Enter Song Name</string>
+    <string name="EnterSongArtist">Enter Song Artist</string>
+    <string name="EnterSongLengthMin">Enter Song Length Minutes</string>
+    <string name="EnterSongLengthSec">Enter Song Length Seconds</string>
+    <string name="EnterInValues">Please fill in all available fields before submitting</string>
+
 </resources>
