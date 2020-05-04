@@ -63,7 +63,29 @@ public class EditSong extends AppCompatActivity {
                 int songMinutes = Integer.parseInt(songMin.getText().toString()) * 60;
                 int songSeconds = Integer.parseInt(songSec.getText().toString());
                 int totalSongLength = songMinutes + songSeconds;
+                if(songName.length() == 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
 
+                }
+                else if(songArtist.length()== 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+                }
+                else if(songMin.length() == 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+
+                }
+                else if (songSec.length() == 0){
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+                }
+                else if(songURL.length() == 0) {
+                    Toast.makeText(getApplicationContext(), R.string.EnterInValues, Toast.LENGTH_SHORT).show();
+
+
+                }
+                else{
                 JSONObject songObject = new JSONObject();
                 try {
                     songObject.put("songID", selectedSong.songID);
@@ -90,6 +112,7 @@ public class EditSong extends AppCompatActivity {
                     }
                 });
                 serviceClient.addRequest(request);
+            }
             }
         });
 

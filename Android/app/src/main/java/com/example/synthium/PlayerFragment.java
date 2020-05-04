@@ -149,6 +149,10 @@ public class PlayerFragment extends Fragment {
             }
 
         }
+        else if(seconds == 0){
+            secondsString = "0"+ seconds;
+        }
+
         else {
             secondsString = "" + seconds;
         }
