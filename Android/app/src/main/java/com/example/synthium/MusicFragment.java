@@ -91,7 +91,6 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_music_list, container, false);
 
-
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -102,7 +101,6 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             model = new SongModel();
-            getSongsRequest(recyclerView, model);
         }
 
         return view;
@@ -111,8 +109,7 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
     @Override
     public void onResume() {
         super.onResume();
-        MyMusicRecyclerViewAdapter adapter = new MyMusicRecyclerViewAdapter(model.getMusic(), mListener);
-        adapter.notifyDataSetChanged();
+        getSongsRequest(recyclerView, model);
     }
 
     public void getSongsRequest(final RecyclerView recyclerView, final SongModel model) {
@@ -123,6 +120,7 @@ public class MusicFragment extends Fragment implements OnListFragmentInteraction
             public void onResponse(String response) {
                 try {
                     JSONArray responseObject = new JSONObject(response).getJSONArray("responseObject");
+                    model.songs.clear();
                     for (int i = 0; i < responseObject.length(); i++) {
                         JSONObject songObject = responseObject.getJSONObject(i);
                         model.setMusic(songObject);
